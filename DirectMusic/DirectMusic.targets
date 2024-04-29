@@ -1,0 +1,21 @@
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <RuntimeIdentifier Condition="$([MSBuild]::IsOSPlatform('Android'))">android-arm64</RuntimeIdentifier>
+        <RuntimeIdentifier Condition="$([MSBuild]::IsOSPlatform('Linux'))">linux-x64</RuntimeIdentifier>
+        <RuntimeIdentifier Condition="$([MSBuild]::IsOSPlatform('Windows'))">win-x64</RuntimeIdentifier>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <NativeAndroid Include="$(MSBuildThisFileDirectory)..\runtimes\android-arm64\native\libdmusic.so"/>
+        <NativeLinux Include="$(MSBuildThisFileDirectory)..\runtimes\linux-x64\native\libdmusic.so"/>
+        <NativeWindows Include="$(MSBuildThisFileDirectory)..\runtimes\win-x64\native\dmusic.dll"/>
+    </ItemGroup>
+    <Target Name="CopyNativeLibraries" BeforeTargets="Build">
+        <Copy SourceFiles="@(NativeAndroid)" Condition="'$(RuntimeIdentifier)' == 'android-arm64'"
+              DestinationFiles="$(TargetDir)\libdmusic.so" ContinueOnError="true"/>
+        <Copy SourceFiles="@(NativeLinux)" Condition="'$(RuntimeIdentifier)' == 'linux-x64'"
+              DestinationFiles="$(TargetDir)\libdmusic.so" ContinueOnError="true"/>
+        <Copy SourceFiles="@(NativeWindows)" Condition="'$(RuntimeIdentifier)' == 'win-x64'"
+              DestinationFiles="$(TargetDir)\dmusic.dll" ContinueOnError="true"/>
+    </Target>
+</Project>

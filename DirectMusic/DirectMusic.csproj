@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <Nullable>enable</Nullable>
+        <RootNamespace>DirectMusic</RootNamespace>
+        <PackRelease>true</PackRelease>
+        <PackageId>DirectMusic</PackageId>
+        <Version>0.1.13</Version>
+        <Authors>Luis Michaelis</Authors>
+        <Company>GothicKit</Company>
+        <Copyright>© 2024. GothicKit Contributors</Copyright>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/GothicKit/dmusic-cs</PackageProjectUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <RepositoryUrl>https://github.com/GothicKit/dmusic-cs</RepositoryUrl>
+
+        <RuntimeIdentifier Condition="$([MSBuild]::IsOSPlatform('Android'))">android-arm64</RuntimeIdentifier>
+        <RuntimeIdentifier Condition="$([MSBuild]::IsOSPlatform('Linux'))">linux-x64</RuntimeIdentifier>
+        <RuntimeIdentifier Condition="$([MSBuild]::IsOSPlatform('Windows'))">win-x64</RuntimeIdentifier>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\README.md" Pack="true" PackagePath="/"/>
+    </ItemGroup>
+
+    <ItemGroup Label="Packaging">
+        <None Include="DirectMusic.targets" Pack="true" PackagePath="build"/>
+
+        <None Include="runtimes\**" Pack="true" PackagePath="runtimes">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+            <PackageCopyToOutput>true</PackageCopyToOutput>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup Label="NativeLibraries">
+        <ContentWithTargetPath Include="runtimes\android-arm64\native\libdmusic.so" Condition="'$(RuntimeIdentifier)' == 'android-arm64'">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>libdmusic.so</TargetPath>
+        </ContentWithTargetPath>
+
+        <ContentWithTargetPath Include="runtimes\linux-x64\native\libdmusic.so" Condition="'$(RuntimeIdentifier)' == 'linux-x64'">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>libdmusic.so</TargetPath>
+        </ContentWithTargetPath>
+
+        <ContentWithTargetPath Include="runtimes\win-x64\native\dmusic.dll" Condition="'$(RuntimeIdentifier)' == 'win-x64'">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>dmusic.dll</TargetPath>
+        </ContentWithTargetPath>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.Text.Encoding.CodePages" Version="7.0.0"/>
+    </ItemGroup>
+</Project>
