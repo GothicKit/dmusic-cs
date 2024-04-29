@@ -22,7 +22,7 @@ jobs:
           mkdir Artifacts && mv DirectMusic/runtimes Artifacts/ &&
           cp __build/DirectMusic.dll Artifacts/ &&
           cp __build/DirectMusic.pdb Artifacts/ &&
-          echo "Copy the native library for your OS from the `runtime` folder into the same folder `DirectMusic.dll` is in." > Artifacts/README.md'
+          echo "Copy the native library for your OS from the `runtime` folder into the same folder `DirectMusic.dll` is in." > Artifacts/README.md
       - name: 'Publish'
         uses: 'actions/upload-artifact@v3'
         with:
