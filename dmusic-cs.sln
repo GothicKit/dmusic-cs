@@ -2,8 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectMusic", "DirectMusic\DirectMusic.csproj", "{AAF21486-6A98-42DD-AAAC-6894DA76A76F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{25DB15B4-89E9-449A-8815-025B371E2CFA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,9 +12,5 @@ Global
 		{AAF21486-6A98-42DD-AAAC-6894DA76A76F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAF21486-6A98-42DD-AAAC-6894DA76A76F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAF21486-6A98-42DD-AAAC-6894DA76A76F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{25DB15B4-89E9-449A-8815-025B371E2CFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{25DB15B4-89E9-449A-8815-025B371E2CFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{25DB15B4-89E9-449A-8815-025B371E2CFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{25DB15B4-89E9-449A-8815-025B371E2CFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
