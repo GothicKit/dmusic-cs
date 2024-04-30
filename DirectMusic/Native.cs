@@ -85,11 +85,14 @@ namespace DirectMusic
 		public static extern void DmPerformance_release(IntPtr slf);
 
 		[DllImport(DllName)]
-		public static extern DmResult DmPerformance_playSegment(IntPtr slf, IntPtr sgt, PlaybackFlags flags);
+		public static extern DmResult DmPerformance_playSegment(IntPtr slf, IntPtr sgt, Timing flags);
 
 		[DllImport(DllName)]
 		public static extern DmResult DmPerformance_playTransition(IntPtr slf, IntPtr sgt, Embellishment embellishment,
-			PlaybackFlags flags);
+			Timing flags);
+		
+		[DllImport(DllName)]
+		public static extern void DmPerformance_setVolume(IntPtr slf, float vol);
 
 		[DllImport(DllName)]
 		public static extern DmResult DmPerformance_renderPcm(IntPtr slf, short[] buf, ulong len, DmRenderOptions opts);
