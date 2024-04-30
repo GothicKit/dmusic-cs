@@ -19,7 +19,7 @@ namespace DirectMusic
 		Intro = 3,
 		Break = 4,
 		End = 5,
-		EndAndIntro = 5,
+		EndAndIntro = 6,
 	}
 
 	public class Performance
