@@ -76,7 +76,7 @@ namespace DirectMusic
 		public static extern DmResult DmSegment_download(IntPtr slf, IntPtr loader);
 
 		[DllImport(DllName)]
-		public static extern DmResult DmPerformance_create(out IntPtr slf);
+		public static extern DmResult DmPerformance_create(out IntPtr slf, uint rate);
 
 		[DllImport(DllName)]
 		public static extern IntPtr DmPerformance_retain(IntPtr slf);
