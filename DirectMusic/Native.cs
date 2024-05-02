@@ -40,6 +40,9 @@ namespace DirectMusic
 		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate void DmLogHandler(IntPtr ctx, LogLevel lvl, string message);
 
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate uint DmRng(IntPtr ctx);
+
 		private const string DllName = "dmusic";
 
 		[DllImport(DllName)]
@@ -99,6 +102,9 @@ namespace DirectMusic
 
 		[DllImport(DllName)]
 		public static extern DmResult DmPerformance_renderPcm(IntPtr slf, float[] buf, ulong len, DmRenderOptions opts);
+
+		[DllImport(DllName)]
+		public static extern void Dm_setRandomNumberGenerator(DmRng rng, IntPtr ctx);
 
 		public class Structs
 		{
